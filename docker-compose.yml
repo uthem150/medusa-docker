@@ -1,14 +1,27 @@
+# Docker Compose 파일 버전 지정
 version: "3.9"
+
+# 서비스 정의
 services:
+  # db 서비스 정의
   db:
+    # PostgreSQL 이미지 사용
     image: postgres
+
+    # 볼륨을 설정하여 데이터베이스 데이터 영구 저장
     volumes:
       - postgres-db:/var/lib/postgresql/data
+
+    # 환경 변수를 설정하여 PostgreSQL 데이터베이스의 초기 설정 구성
     environment:
-      - POSTGRES_DB=medusa_db
-      - POSTGRES_USER=yourusername
-      - POSTGRES_PASSWORD=yourpassword
+      - POSTGRES_DB=medusa_db # 데이터베이스 이름을 medusa_db로 설정
+      - POSTGRES_USER=yourusername # 데이터베이스 사용자 이름을 yourusername으로 설정
+      - POSTGRES_PASSWORD=yourpassword # 데이터베이스 사용자 비밀번호를 yourpassword로 설정
+
+    # 호스트의 포트를 컨테이너의 포트에 매핑하여 외부 접근을 허용
     ports:
-      - 5432:5432
+      - 5432:5432 # 호스트의 포트 5432를 컨테이너의 포트 5432에 매핑
+
+# 볼륨 정의 섹션
 volumes:
-  postgres-db:
+  postgres-db: # postgres-db라는 이름의 볼륨 정의
