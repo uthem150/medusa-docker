@@ -35,6 +35,8 @@
     npm i
     npm run start
     ```
+<br>
+
 ---
 ## medusa 처음부터 시작하는 법
 1. 루트 디렉토리에 Docker Compose 파일 작성
