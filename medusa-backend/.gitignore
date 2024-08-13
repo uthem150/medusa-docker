@@ -1,19 +1,27 @@
+# 빌드 결과물이나 배포 파일들이 저장되는 디렉터리
 /dist
+
 .env
+
+# macOS에서 디렉터리의 메타데이터를 저장하는 숨김 파일
 .DS_Store
 /uploads
 /node_modules
 yarn-error.log
 
+# 프로젝트 설정 파일들
 .idea
 
 coverage
 
+# src 디렉터리의 모든 파일을 포함하라
 !src/**
 
 ./tsconfig.tsbuildinfo
 package-lock.json
 yarn.lock
+
+# Medusa 데이터베이스의 백업 파일
 medusa-db.sql
 build
 .cache
