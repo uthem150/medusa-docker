@@ -1,17 +1,18 @@
 import { defineConfig, devices } from "@playwright/test"
 import path from "path"
-import "dotenv/config.js"
+import "dotenv/config.js" // .env 파일에서 환경 변수를 로드하는 패키지
 
+// 인증된 사용자의 상태(쿠키, 로컬 스토리지 등)를 저장하는 파일 경로 정의
 export const STORAGE_STATE = path.join(__dirname, "playwright/.auth/user.json")
 
 export default defineConfig({
-  testDir: "./e2e",
+  testDir: "./e2e", // 테스트 파일이 위치한 디렉토리 지정
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: process.env.CI ? 2 : 0,
+  retries: process.env.CI ? 2 : 0, //테스트 재시도 횟수 지정 - CI 환경에서는 최대 2
   /* Opt out of parallel tests on CI. */
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
@@ -70,8 +71,8 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-     command: 'yarn start',
-     url: process.env.NEXT_PUBLIC_BASE_URL,
-  //   reuseExistingServer: !process.env.CI,
+    command: "yarn start",
+    url: process.env.NEXT_PUBLIC_BASE_URL,
+    //   reuseExistingServer: !process.env.CI,
   },
 })

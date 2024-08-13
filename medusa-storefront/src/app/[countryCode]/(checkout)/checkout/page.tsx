@@ -9,22 +9,26 @@ import CheckoutForm from "@modules/checkout/templates/checkout-form"
 import CheckoutSummary from "@modules/checkout/templates/checkout-summary"
 import { getCart } from "@lib/data"
 
+// 브라우저 탭에 표시될 제목 지정
 export const metadata: Metadata = {
   title: "Checkout",
 }
 
 const fetchCart = async () => {
-  const cartId = cookies().get("_medusa_cart_id")?.value
+  const cartId = cookies().get("_medusa_cart_id")?.value //쿠키에서 장바구니 ID를 가져옴
 
+  //장바구니 ID가 없다면 notFound()를 호출하여 404 페이지를 반환
   if (!cartId) {
     return notFound()
   }
 
+  //getCart 함수를 사용해 장바구니 데이터를 가져옴
   const cart = await getCart(cartId).then((cart) => cart)
 
   if (cart?.items.length) {
+    //제품의 상세 정보, 세금 계산등 정보 추가
     const enrichedItems = await enrichLineItems(cart?.items, cart?.region_id)
-    cart.items = enrichedItems as LineItem[]
+    cart.items = enrichedItems as LineItem[] //처리된 장바구니 데이터 반환
   }
 
   return cart
