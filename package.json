@@ -2,7 +2,7 @@
   "name": "medusa-project",
   "version": "1.0.0",
   "scripts": {
-    "start:medusa": "cd medusa-backend && npm run dev",
+    "start:medusa": "cd medusa-admin && npm run dev",
     "start:storefront": "cd medusa-storefront && npm run dev",
     "start": "concurrently \"npm run start:medusa\" \"npm run start:storefront\""
   },
