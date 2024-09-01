@@ -116,6 +116,13 @@ const modules = {
   },*/
 };
 
+// loaders
+const loaders = [
+  {
+    resolve: "src/loaders/timesale",
+  },
+];
+
 /** @type {import('@medusajs/medusa').ConfigModule["projectConfig"]} */
 const projectConfig = {
   jwt_secret: process.env.JWT_SECRET || "supersecret",
@@ -132,4 +139,5 @@ module.exports = {
   projectConfig,
   plugins,
   modules,
+  loaders, // Medusa 서버가 시작될 때 사용자 정의 로더를 실행시키도록
 };
