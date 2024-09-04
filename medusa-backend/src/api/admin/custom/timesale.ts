@@ -69,7 +69,7 @@ export default (router: Router) => {
     })
   );
 
-  // Delete a TimeSale by ID
+  // ID로 타임세일 삭제
   route.delete(
     "/:id",
     handleAsync(async (req, res) => {
@@ -104,3 +104,5 @@ export default (router: Router) => {
       .json({ error: "Internal Server Error", details: err.message }); // 클라이언트에 에러 메시지 반환
   });
 };
+
+
